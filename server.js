@@ -5,7 +5,8 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 //Imported Files
-
+const admin = require('./routes/adminRoutes');
+const user = require('./routes/userRoutes');
 
 //Connection with dataBase
 mongoose.connect(process.env.MONGO_URL)
@@ -17,9 +18,8 @@ mongoose.connection.once("open", () =>{
 app.use(express.json());
 
 // routing parts
-app.get('/', (req, res) => {
-    res.send('Welcome to my project')
-} );
+app.use('/admin', admin);
+app.use('/user', user)
 
 //listning of server
 app.listen(port, () => {

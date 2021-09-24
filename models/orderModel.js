@@ -14,6 +14,6 @@ const adminSchema = mongoose.Schema({
         type:Number,
         require:true
     }
-}, {timeStamps : true})
+}, {timestamps : true})
 
 module.exports = mongoose.model("Order", adminSchema)

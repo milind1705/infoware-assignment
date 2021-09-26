@@ -1,6 +1,12 @@
 const Product = require("../models/productModel");
 
 module.exports.createProduct = (req, res) => {
+  const name = req.body.name;
+  Product.findOne({name:name}).then((product) => {
+    if(product){
+      return res.status.json("This product alredy available in databse")
+    } 
+  
   const newProduct = new Product(req.body);
   newProduct
     .save()
@@ -12,6 +18,7 @@ module.exports.createProduct = (req, res) => {
         message: err.message || "Something went wrong",
       });
     });
+  })
 };
 
 module.exports.getAll_product = (req, res) => {

@@ -3,16 +3,22 @@ const adminSchema = mongoose.Schema({
     user:{
         type:mongoose.Schema.Types.ObjectId,
         ref: "User",
-        require:true
+        required:true
+    },
+    product:{
+        //type:String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product",
+        required: true
     },
     quantity:{
         type:Number,
-        require:true,
+        required:true,
         default: 1
     },
     Totalprice:{
         type:Number,
-        require:true
+        
     }
 }, {timestamps : true})
 

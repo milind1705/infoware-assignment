@@ -2,7 +2,7 @@ const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-//SignUp for admin
+//SignUp for user
 module.exports.signUp = (req, res) => {
   const { name, email, mobile, password } = req.body;
   //validating fields
@@ -38,7 +38,7 @@ module.exports.signUp = (req, res) => {
     });
   });
 };
-
+//login for user
 module.exports.login = (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -63,7 +63,7 @@ module.exports.login = (req, res) => {
           if (err) throw err;
           return res.status(200).json({
             token: token,
-            user: { name: user.name, email: user.email },
+            user: { id:user._id, name: user.name, email: user.email },
           });
         }
       );

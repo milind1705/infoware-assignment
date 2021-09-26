@@ -2,20 +2,19 @@ const mongoose = require('mongoose');
 const adminSchema = mongoose.Schema({
     name:{
         type:String,
-        require:true
+        required:true
     },
     email:{
         type:String,
-        require:true
+        required:true
     },
     mobile:{
         type:Number,
-        require:true
+        required:true
     },
     password:{
         type:String,
-        require:true,
-        minlength: 5
+        required:true,
     },
 }, {timestamps : true})
 
